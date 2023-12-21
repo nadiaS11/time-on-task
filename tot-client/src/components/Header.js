@@ -7,18 +7,14 @@ import HeadLottie from "../components/lotties/HeadLottie.json";
 import { Box, Button, Container, Heading, Stack, Text } from "@chakra-ui/react";
 const Header = (props) => {
   return (
-    <div className="bg-header w-full   overflow-hidden  md:h-[70vh] ">
+    <div className="bg-header w-full   overflow-hidden   ">
       <Navbar />
       <div className="flex flex-col md:flex-row items-center justify-between max-w-screen-2xl   px-5  w-full mx-auto">
         <div className="max-w-2xl mx-auto w-full">
           <Heading
             mb={4}
             as={"h2"}
-            bgGradient={[
-              "linear(to-tr, teal.600, yellow.400)",
-              "linear(to-b, blue.600, teal.500)",
-              "linear(to-t, orange.800, purple.300)",
-            ]}
+            bgGradient={["linear(to-t, yellow.300, blue.100)"]}
             bgClip="text"
             // fontSize="6xl"
             // fontWeight="extrabold"
@@ -26,7 +22,7 @@ const Header = (props) => {
             Effortless Organization, <br />
             Seamless Productivity. <br /> Your Tasks, Your Way!
           </Heading>
-          <Text fontSize="xl">
+          <Text fontSize="xl" color={"ghostwhite"}>
             Optimize tasks, enhance efficiency. Tailor your workflow with our
             intuitive task management platform. Elevate productivity, simplify
             organization, achieve more effortlessly
@@ -35,12 +31,12 @@ const Header = (props) => {
             as="button"
             p={4}
             mt={"15px"}
-            color="white"
+            color="ghostwhite"
             fontWeight="bold"
             borderRadius="md"
-            bgGradient={["linear(to-t, orange.500, purple.500)"]}
+            bgGradient={["linear(to-tr, yellow.400, blue.600)"]}
             _hover={{
-              bgGradient: "linear(to-r, purple.400, pink.400)",
+              bgGradient: "linear(to-br, yellow.700, blue.700)",
             }}
           >
             Let's Explore
