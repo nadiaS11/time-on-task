@@ -42,7 +42,7 @@ const Footer = (props) => {
           </div>
         </div>
         <div className="flex flex-col">
-          <div className="flex flex-col mt-24 mb-12 md:flex-row items-center  justify-center md:justify-between">
+          <div className="flex flex-col mt-24 mb-12 md:flex-row items-center  justify-center md:justify-between gap-5">
             <div className=""></div>
 
             <a>
@@ -50,16 +50,16 @@ const Footer = (props) => {
               <Image width={"50"} height={"50"} src={"/tot-logo.png"} />
             </a>
 
-            <a className="   cursor-pointer text-gray-600 hover:bg-purple-400 hover:bg-opacity-50  p-3  rounded uppercase">
+            <a className="   cursor-pointer text-gray-600 hover:bg-slate-100   p-3  rounded uppercase">
               About
             </a>
-            <a className="   cursor-pointer text-gray-600 hover:bg-purple-400 hover:bg-opacity-50  p-3  rounded uppercase">
+            <a className="   cursor-pointer text-gray-600 hover:bg-slate-100   p-3  rounded uppercase">
               Services
             </a>
-            <a className="   cursor-pointer text-gray-600 hover:bg-purple-400 hover:bg-opacity-50  p-3  rounded uppercase">
+            <a className="   cursor-pointer text-gray-600 hover:bg-slate-100  p-3  rounded uppercase">
               Why us
             </a>
-            <a className="   cursor-pointer text-gray-600 hover:bg-purple-400 hover:bg-opacity-50  p-3  rounded uppercase">
+            <a className="   cursor-pointer text-gray-600 hover:bg-slate-100   p-3  rounded uppercase">
               Contact
             </a>
             <div className="flex flex-row space-x-4 items-center justify-between">

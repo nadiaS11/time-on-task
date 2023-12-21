@@ -7,6 +7,7 @@ import { MdDashboard } from "react-icons/md";
 import { FaAlignJustify } from "react-icons/fa";
 
 import { Switch, Icon } from "@chakra-ui/react";
+import Image from "next/image";
 
 const Navbar = (props) => {
   const user = {};
@@ -35,18 +36,23 @@ const Navbar = (props) => {
 
   return (
     <div className="shadow">
-      <div className=" relative z-40 p-5  flex items-center justify-center max-w-screen-2xl mx-auto">
-        <nav className="flex py-3 px-2   items-center justify-between lg:container mx-auto flex-grow">
-          <div className="flex items-center  ">
+      <div className=" relative z-40 p-5    flex items-center justify-center max-w-screen-2xl mx-auto">
+        <nav className="flex   px-2  text-white font-semibold tracking-wider items-center justify-between lg:container mx-auto flex-grow">
+          <a className="mx-auto md:mx-0 ">
+            {" "}
+            <Image width={"80"} height={"50"} src={"/tot-logo.png"} />
+          </a>{" "}
+          <div className="flex items-center order-first md:order-none mx-auto">
             <FaAlignJustify
               onClick={() => setOpen(!open)}
-              className=" md:hidden font-medium   mr-2 "
+              className=" md:hidden    mr-2 "
+              size={"1.5rem"}
             />
             <ul
               onClick={() => setOpen(!open)}
               className={`absolute left-2 grid text-right duration-100 z-50   ${
                 open
-                  ? "top-24  backdrop-blur text-white  md:bg-none rounded space-y-2"
+                  ? "top-24  backdrop-blur text-slate-800   md:bg-none rounded space-y-2"
                   : "-top-60 "
               } md:static md:flex md:gap-5 py-2     px-2`}
             >
@@ -136,20 +142,20 @@ const Navbar = (props) => {
                       Log Out
                     </Link>
                   </li>
-                </ul>
+                </ul>{" "}
+                <Switch
+                  onChange={handleToggle}
+                  // type="checkbox"
+                  // checked={theme === "light" ? false : true}
+                  colorScheme=""
+                  className="bg-gray-900 rounded-full"
+                  size="lg"
+                />
               </div>
             )}
           </div>
         </nav>
-        <div className="flex-none ">
-          <Switch
-            onChange={handleToggle}
-            // type="checkbox"
-            // checked={theme === "light" ? false : true}
-            colorScheme="black"
-            size="lg"
-          />
-        </div>
+        <div className="flex-none "></div>
       </div>
     </div>
   );

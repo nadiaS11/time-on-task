@@ -10,7 +10,7 @@ const Header = (props) => {
     <div className="bg-header w-full   overflow-hidden   ">
       <Navbar />
       <div className="flex flex-col md:flex-row items-center justify-between max-w-screen-2xl   px-5  w-full mx-auto">
-        <div className="max-w-2xl mx-auto w-full">
+        <div className="max-w-2xl mx-auto py-5 w-full">
           <Heading
             mb={4}
             as={"h2"}
