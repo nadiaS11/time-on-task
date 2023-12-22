@@ -57,7 +57,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive ? "        " : "    md:text-white      "
                 }
-                href={"/"}
+                to={"/"}
               >
                 Home
               </NavLink>
@@ -67,7 +67,7 @@ const Navbar = () => {
                     ? "    text-black          "
                     : "    md:text-white      "
                 }
-                href={"/add-product"}
+                to={"/add-product"}
               >
                 Add Product
               </NavLink>
@@ -75,7 +75,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive ? "              " : " md:text-white          "
                 }
-                href={`/cart`}
+                to={`/cart`}
               >
                 My Cart
               </NavLink>
@@ -103,7 +103,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive ? "      " : "text-white border-white        "
                 }
-                href={"/login"}
+                to={"/login"}
               >
                 Log In
               </NavLink>
@@ -130,14 +130,21 @@ const Navbar = () => {
                   />
                 </li> */}
                   <li>
-                    <h4 className="md:text-white        ">
+                    <NavLink
+                      to={"/taskboard"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "        "
+                          : "    -ghost     md:text-white border-white     text-right"
+                      }
+                    >
                       {user?.displayName ? user.displayName : ""}
-                    </h4>
+                    </NavLink>
                   </li>
                   <li>
                     <NavLink
                       onClick={handleLogOut}
-                      href={"/login"}
+                      to={"/login"}
                       className={({ isActive }) =>
                         isActive
                           ? "        "

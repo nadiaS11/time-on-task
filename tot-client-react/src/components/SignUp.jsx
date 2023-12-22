@@ -36,12 +36,12 @@ const SignUp = (props) => {
       const newUser = await createUser(data?.email, data?.password);
       console.log(newUser);
 
-      const res = await axiosPublic.put("/users", user);
-      console.log(res);
+      const res = await axiosPublic.post("/user", user);
+      console.log(res.data);
 
       await updateUserProfile(data?.name, imgUrl);
 
-      toast.success("Successfully registered.");
+      toast.success("Sign up successful.");
       navigate("/");
     } catch (err) {
       console.log(err);
