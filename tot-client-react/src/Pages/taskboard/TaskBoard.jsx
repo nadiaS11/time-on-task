@@ -9,24 +9,24 @@ import { Outlet } from "react-router-dom";
 const TaskBoard = (props) => {
   return (
     <Grid
-      templateColumns="repeat(5, 1fr)"
-      gap={4}
-      className="   text-gray-200 bg-gray-200 "
+      templateColumns="repeat(12, 1fr)"
+      gap={6}
+      className=" overflow-hidden  text-gray-200 bg-gray-200 "
     >
       <Show above="md">
         {" "}
-        <GridItem colSpan={1}>
+        <GridItem colSpan={3} w={"100%"}>
           <Sidebar />
         </GridItem>
-        <GridItem colSpan={4} className="bg-taskboard">
+        <GridItem colSpan={9} className="bg-taskboard">
           <Outlet />
         </GridItem>
       </Show>
       <Show below="md">
-        <GridItem colSpan={5}>
+        <GridItem colSpan={12}>
           <Sidebar />
         </GridItem>
-        <GridItem colSpan={5} className="bg-taskboard">
+        <GridItem colSpan={12} className="bg-taskboard">
           <Outlet />
         </GridItem>
       </Show>

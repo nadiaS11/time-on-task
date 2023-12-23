@@ -7,6 +7,7 @@ import ErrorPage from "../Pages/errorpage/ErrorPage";
 import TaskBoard from "../Pages/taskboard/TaskBoard";
 import AddTask from "../Pages/taskboard/AddTask";
 import AllTasks from "../Pages/taskboard/AllTasks";
+import UpdateTask from "../Pages/taskboard/UpdateTask";
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +28,11 @@ export const router = createBrowserRouter([
             element: <AddTask />,
           },
           {
-            path: "tasks",
+            path: "update-task/:id",
+            element: <UpdateTask />,
+          },
+          {
+            path: "/taskboard",
             element: <AllTasks />,
           },
         ],

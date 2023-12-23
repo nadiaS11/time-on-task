@@ -10,7 +10,7 @@ const TaskBoardNav = (props) => {
   return (
     <VStack spacing={2} align={"center"} w={"400px"}>
       <Box
-        href="/taskboard/tasks"
+        href="/taskboard"
         as="a"
         h="40px"
         display={"Flex"}
@@ -23,7 +23,7 @@ const TaskBoardNav = (props) => {
       {menu?.map((item, id) => (
         <Box
           key={id}
-          href={`/taskboard/${item?.path}`}
+          href={item?.path ? `/taskboard/${item?.path}` : "/"}
           as="a"
           h="40px"
           display={"inline-flex"}

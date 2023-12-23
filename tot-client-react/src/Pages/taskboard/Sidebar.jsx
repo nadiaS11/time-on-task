@@ -11,10 +11,11 @@ const Sidebar = (props) => {
         height={"100vh"}
         divider={<StackDivider borderColor="cornsilk" />}
         spacing={4}
-        align="stretch"
+        align="center"
         padding={"30px 10px"}
+        overflow={"hidden"}
       >
-        <Box h="35%">
+        <Box h="45%">
           <TaskBoardProfile />{" "}
         </Box>
         <Box>

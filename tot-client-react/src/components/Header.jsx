@@ -21,13 +21,14 @@ const Header = () => {
             Effortless Organization, <br />
             Seamless Productivity. <br /> Your Tasks, Your Way!
           </Heading>
-          <Text fontSize="xl" color={"ghostwhite"}>
+          <Text fontSize="xl" my={"20px"} color={"ghostwhite"}>
             Optimize tasks, enhance efficiency. Tailor your workflow with our
             intuitive task management platform. Elevate productivity, simplify
             organization, achieve more effortlessly
           </Text>
           <Box
-            as="button"
+            href="/taskboard"
+            as="a"
             p={4}
             mt={"15px"}
             color="ghostwhite"

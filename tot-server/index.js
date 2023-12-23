@@ -2,7 +2,6 @@ const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
-// const stripe = require("stripe")(process.env.PAYMENT_KEY);
 
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
@@ -12,7 +11,11 @@ const port = process.env.PORT || 5000;
 
 // middleware
 const corsOptions = {
-  origin: ["http://localhost:5173", "http://localhost:5174"],
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "https://time-on-task-project.web.app",
+  ],
   credentials: true,
   optionSuccessStatus: 200,
 };
@@ -98,14 +101,24 @@ async function run() {
       if (findUser) {
         return res.send({ message: "Already exists." });
       }
-      const result = await userCollection.insertOne(query);
-      res.send({ message: "New user entered.", result });
+      const result = await userCollection.insertOne(user);
+      res.send({ message: "New user joined.", result });
     });
 
     //get all task
-    app.get("/tasks", async (req, res) => {
+    app.get("/tasks", verifyToken, async (req, res) => {
       const query = { email: req.query.email };
       const result = await taskCollection.find(query).toArray();
+      res.send(result);
+    });
+
+    //single task
+    app.get("/task/:id", verifyToken, async (req, res) => {
+      const id = req.params.id;
+      const email = req.query.email;
+
+      const query = { _id: new ObjectId(id), email: email };
+      const result = await taskCollection.findOne(query);
       res.send(result);
     });
 
@@ -115,8 +128,9 @@ async function run() {
       const result = await taskCollection.insertOne(task);
       res.send(result);
     });
+
     //patch a task status
-    app.post("/task/:id", verifyToken, async (req, res) => {
+    app.patch("/task/:id", verifyToken, async (req, res) => {
       const status = req.body;
       const id = req.params.id;
       const filter = { _id: new ObjectId(id) };
@@ -125,7 +139,27 @@ async function run() {
           ...status,
         },
       };
-      const result = await userCollection.updateOne(filter, updateDoc);
+      const result = await taskCollection.updateOne(filter, updateDoc);
+      res.send(result);
+    });
+
+    app.patch("/update-task/:id", verifyToken, async (req, res) => {
+      const updatedTask = req.body;
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id), email: req.query.email };
+      const updateDoc = {
+        $set: {
+          ...updatedTask,
+        },
+      };
+      const result = await taskCollection.updateOne(filter, updateDoc);
+      res.send(result);
+    });
+
+    app.delete(`/delete-task/:id`, async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await taskCollection.deleteOne(query);
       res.send(result);
     });
 

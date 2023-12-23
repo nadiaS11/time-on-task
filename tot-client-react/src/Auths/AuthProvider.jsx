@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const subscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-
+      console.log(currentUser);
       if (currentUser) {
         try {
           const email = auth.currentUser.email;

@@ -6,13 +6,16 @@ import { FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 const TaskBoardProfile = (props) => {
   const { user } = useAuth();
+  console.log(user);
 
   return (
-    <div>
+    <div className=" ">
       <Image
         borderRadius="full"
-        boxSize="100px"
-        src={user?.photoURL}
+        boxSize="150px"
+        border={"2px"}
+        p={"5px"}
+        src={user?.photoURL ? user?.photoURL : "./tot-logo.png"}
         className="mx-auto"
         alt="user name"
       />
