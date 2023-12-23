@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import useAuth from "../../hooks/useAuth";
 import { Box, Heading, Image, Wrap, WrapItem } from "@chakra-ui/react";
 import { FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const TaskBoardProfile = (props) => {
   const { user } = useAuth();
@@ -22,37 +23,52 @@ const TaskBoardProfile = (props) => {
       <Heading as="h3" size="lg" my={"20px"} textAlign={"center"}>
         {user?.displayName}
       </Heading>
-      <Box
-        as="h6"
-        size="sm"
-        my={"20px"}
-        p={"10px"}
-        w={"200px"}
-        mx={"auto"}
-        textAlign={"center"}
-        borderRadius="md"
-        bgGradient={["linear(to-tr, purple.900, pink.400)"]}
-        _hover={{
-          bgGradient: "linear(to-br, purple.900, pink.400)",
-        }}
-      >
-        Portfolio{" "}
-      </Box>
+      <Link target="_blank" to={"https://nadia-sultana-portfolio.netlify.app"}>
+        <Box
+          target="_blank"
+          href="https://nadia-sultana-portfolio.netlify.app/"
+          size="sm"
+          my={"20px"}
+          p={"10px"}
+          w={"200px"}
+          mx={"auto"}
+          textAlign={"center"}
+          borderRadius="md"
+          bgGradient={["linear(to-tr, purple.900, pink.400)"]}
+          _hover={{
+            bgGradient: "linear(to-br, purple.900, pink.400)",
+          }}
+        >
+          Portfolio{" "}
+        </Box>
+      </Link>
       <Wrap spacing="30px" justify="center" mt="40px">
         <WrapItem>
-          <a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.facebook.com/nadia.ns11/"
+          >
             {" "}
             <FaFacebookF size={"1.2rem"} />
           </a>
         </WrapItem>
         <WrapItem>
-          <a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://linkedin.com/in/nadia-ns11"
+          >
             {" "}
             <FaLinkedinIn size={"1.2rem"} />
           </a>
         </WrapItem>
         <WrapItem>
-          <a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://github.com/nadiaS11"
+          >
             {" "}
             <FaGithub size={"1.2rem"} />
           </a>

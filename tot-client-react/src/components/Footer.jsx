@@ -57,15 +57,27 @@ const Footer = () => {
               Contact
             </a>
             <div className="flex flex-row space-x-4 items-center justify-between">
-              <a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.facebook.com/nadia.ns11/"
+              >
                 {" "}
                 <FaFacebookF size={"1.2rem"} />
               </a>
-              <a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://github.com/nadiaS11"
+              >
                 {" "}
                 <FaGithub size={"1.2rem"} />
               </a>
-              <a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://linkedin.com/in/nadia-ns11"
+              >
                 {" "}
                 <FaLinkedinIn size={"1.2rem"} />
               </a>
