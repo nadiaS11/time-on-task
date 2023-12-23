@@ -2,15 +2,16 @@ import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 const Login = () => {
   const { user, signInUser } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const from = location?.state?.from?.pathname
-    ? location?.state?.from?.pathname
-    : "/";
+  // const from = location?.state?.from?.pathname
+  //   ? location?.state?.from?.pathname
+  //   : "/";
   const {
     register,
     handleSubmit,

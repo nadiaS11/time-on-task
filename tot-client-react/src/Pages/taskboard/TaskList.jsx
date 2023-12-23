@@ -18,11 +18,11 @@ import {
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import UpdateTask from "./UpdateTask";
+import { getDeadline } from "../../utils/util";
 
 const TaskList = ({ list, tasks, status, refetch, mutate }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   console.log(tasks);
-
   const [selectedTaskId, setSelectedTaskId] = useState(null);
 
   const handleDelete = (_id) => {
@@ -105,7 +105,7 @@ const TaskList = ({ list, tasks, status, refetch, mutate }) => {
                               {filteredTask?.title}
                             </div>
                             <div className="w-full mr-4">
-                              {filteredTask?.deadline}
+                              {getDeadline(filteredTask?.deadline)}{" "}
                             </div>
                             <div className="w-full mr-4">
                               {filteredTask?.priority}

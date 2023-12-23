@@ -154,7 +154,7 @@ const UpdateTask = () => {
         {/* Submit Button */}
         <input
           type="submit"
-          value="Add Task"
+          value="Update Task"
           className="  p-5 bg-gray-800 bg-opacity-50 rounded py-2 text-white hover:bg-gray-600 hover:bg-opacity-50 mt-2"
         />
       </form>

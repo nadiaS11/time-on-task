@@ -35,15 +35,15 @@ const Navbar = () => {
   return (
     <div className="shadow">
       <div className=" relative z-40 p-5    flex items-center justify-center max-w-screen-2xl mx-auto">
-        <nav className="flex   px-2  text-white font-semibold tracking-wider items-center justify-between lg:container mx-auto flex-grow">
+        <nav className="flex   px-2  text-white font-semibold tracking-wider items-center md:justify-between lg:container mx-auto flex-grow">
           <a className="mx-auto md:mx-0 ">
             {" "}
             <img src={"/tot-logo.png"} className="w-16 h-auto" />
           </a>{" "}
-          <div className="flex items-center order-first md:order-none mx-auto">
+          <div className="flex items-center order-first md:order-none  ">
             <FaAlignJustify
               onClick={() => setOpen(!open)}
-              className=" md:hidden    mr-2 "
+              className=" md:hidden     mr-2 "
               size={"1.5rem"}
             />
             <ul
@@ -70,9 +70,9 @@ const Navbar = () => {
                     ? "  border-b-2 border-white     p-2     "
                     : " md:text-white      p-2      "
                 }
-                to={"/add-product"}
+                to={"/features"}
               >
-                Add Product
+                Features
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
@@ -80,9 +80,9 @@ const Navbar = () => {
                     ? "  border-b-2 border-white      p-2    "
                     : " md:text-white     p-2       "
                 }
-                to={`/cart`}
+                to={`/pricing`}
               >
-                My Cart
+                Pricing
               </NavLink>
             </ul>
           </div>

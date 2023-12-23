@@ -2,10 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { VStack, Box, Text, Flex } from "@chakra-ui/react";
 import { FaHome } from "react-icons/fa";
-import { MdDashboard } from "react-icons/md";
+import { MdDashboard, MdLogout } from "react-icons/md";
 import useMenu from "../../hooks/useMenu";
 import { auth } from "../../Auths/firebase.config";
+import useAuth from "../../hooks/useAuth";
 const TaskBoardNav = (props) => {
+  const { signOutUser } = useAuth();
   const menu = useMenu();
   return (
     <VStack spacing={2} align={"center"} w={"400px"}>
@@ -34,6 +36,18 @@ const TaskBoardNav = (props) => {
           <Text w={"150px"}>{item?.name}</Text>
         </Box>
       ))}
+      <Box
+        onClick={() => signOutUser()}
+        href="/login"
+        as="a"
+        h="40px"
+        display={"Flex"}
+        alignItems={"center"}
+        gap={"10px"}
+      >
+        <MdLogout />
+        <Text w={"150px"}>Log Out</Text>
+      </Box>
     </VStack>
   );
 };

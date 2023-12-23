@@ -21,3 +21,50 @@
 
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#020344", endColorstr="#28B8D5", GradientType=1 );
 }
+
+.card-gradient {
+  background: hsla(0, 0%, 7%, 1);
+
+  background: linear-gradient(
+    0deg,
+    hsla(0, 0%, 7%, 1) 0%,
+    hsla(247, 60%, 21%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    0deg,
+    hsla(0, 0%, 7%, 1) 0%,
+    hsla(247, 60%, 21%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    0deg,
+    hsla(0, 0%, 7%, 1) 0%,
+    hsla(247, 60%, 21%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#111111", endColorstr="#1C1554", GradientType=1 );
+}
+.white-gradient {
+  background: hsla(332, 53%, 82%, 1);
+
+  background: linear-gradient(
+    180deg,
+    hsla(332, 53%, 82%, 1) 0%,
+    hsla(176, 57%, 89%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    180deg,
+    hsla(332, 53%, 82%, 1) 0%,
+    hsla(176, 57%, 89%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    180deg,
+    hsla(332, 53%, 82%, 1) 0%,
+    hsla(176, 57%, 89%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E9B7CE", endColorstr="#D3F3F1", GradientType=1 );
+}

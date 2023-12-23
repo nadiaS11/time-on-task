@@ -8,6 +8,9 @@ import TaskBoard from "../Pages/taskboard/TaskBoard";
 import AddTask from "../Pages/taskboard/AddTask";
 import AllTasks from "../Pages/taskboard/AllTasks";
 import UpdateTask from "../Pages/taskboard/UpdateTask";
+import PrivateRoute from "./PrivateRoute";
+import Pricing from "../Pages/others/Pricing";
+import Features from "../Pages/others/Features";
 
 export const router = createBrowserRouter([
   {
@@ -20,20 +23,44 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/features",
+        element: <Features />,
+      },
+      {
+        path: "/pricing",
+        element: <Pricing />,
+      },
+      {
         path: "/taskboard",
-        element: <TaskBoard />,
+        element: (
+          <PrivateRoute>
+            <TaskBoard />
+          </PrivateRoute>
+        ),
         children: [
           {
             path: "add-task",
-            element: <AddTask />,
+            element: (
+              <PrivateRoute>
+                <AddTask />{" "}
+              </PrivateRoute>
+            ),
           },
           {
             path: "update-task/:id",
-            element: <UpdateTask />,
+            element: (
+              <PrivateRoute>
+                <UpdateTask />
+              </PrivateRoute>
+            ),
           },
           {
             path: "/taskboard",
-            element: <AllTasks />,
+            element: (
+              <PrivateRoute>
+                <AllTasks />{" "}
+              </PrivateRoute>
+            ),
           },
         ],
       },
