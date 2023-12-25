@@ -17,6 +17,9 @@ const LoginPage = () => {
     <Container maxW={"xl"} centerContent>
       <Box
         d={"flex"}
+        flexDir={"column"}
+        my={"auto"}
+        na
         alignItems={"center"}
         p={"5"}
         m={"50px 0 20px 0"}
@@ -26,8 +29,8 @@ const LoginPage = () => {
       >
         <Tabs isFitted variant="enclosed">
           <TabList mb="1em">
-            <Tab>Log In</Tab>
-            <Tab>Sign Up</Tab>
+            <Tab className="focus:ring-2">Log In</Tab>
+            <Tab className="focus:ring-2">Sign Up</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>

@@ -6,6 +6,8 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import GoogleButton from "./buttons/GoogleButton";
+import GithubButton from "./buttons/GithubButton";
 // import { imgUpload } from "@/utils/imgUpload";
 
 const SignUp = (props) => {
@@ -45,79 +47,87 @@ const SignUp = (props) => {
       navigate("/");
     } catch (err) {
       console.log(err);
+      toast.error(err.message);
     }
   };
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col max-w-xl mx-auto gap-5  mt-5 w-full"
-    >
-      <div className="flex flex-col gap-1">
-        <input
-          type="file"
-          {...register("image", {
-            maxLength: 1,
-          })}
-          className=" p-2  rounded"
-        />
-      </div>
-      <div className="flex flex-col gap-1">
-        <input
-          type="text"
-          {...register("name", {
-            required: true,
-          })}
-          className="p-2 rounded"
-          placeholder="Your name "
-        />
-        {errors?.name?.type === "required" && <p>This field is required</p>}
-      </div>
-      <div className="flex flex-col gap-2">
-        <input
-          type="email"
-          {...register("email", {
-            required: true,
-          })}
-          className="p-2 rounded"
-          placeholder="Your email address"
-        />
-        {errors?.firstName?.type === "required" && (
-          <p>This field is required</p>
-        )}
-      </div>
+    <>
+      {" "}
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col max-w-xl mx-auto gap-5  mt-5 w-full"
+      >
+        <div className="flex flex-col gap-1">
+          <input
+            type="file"
+            {...register("image", {
+              maxLength: 1,
+            })}
+            className=" p-2  rounded"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <input
+            type="text"
+            {...register("name", {
+              required: true,
+            })}
+            className="p-2 rounded"
+            placeholder="Your name "
+          />
+          {errors?.name?.type === "required" && <p>This field is required</p>}
+        </div>
+        <div className="flex flex-col gap-2">
+          <input
+            type="email"
+            {...register("email", {
+              required: true,
+            })}
+            className="p-2 rounded"
+            placeholder="Your email address"
+          />
+          {errors?.firstName?.type === "required" && (
+            <p>This field is required</p>
+          )}
+        </div>
 
-      <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
+          <input
+            {...register("password", {
+              required: true,
+              minLength: 8,
+              maxLength: 20,
+              pattern: /^(?=.*?[!@#$&*~])(?=.*[A-Z]).{8,}$/,
+            })}
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
+            autoComplete="current-password"
+            required
+            className="p-2 rounded"
+          />{" "}
+          {errors.password?.type === "required" && (
+            <span className="text-red-600">Password is required</span>
+          )}
+          {errors.password?.type === "pattern" && (
+            <span className="text-red-600">
+              Password must have at least one special character and One capital
+              letter.
+            </span>
+          )}
+        </div>
         <input
-          {...register("password", {
-            required: true,
-            minLength: 8,
-            maxLength: 20,
-            pattern: /^(?=.*?[!@#$&*~])(?=.*[A-Z]).{8,}$/,
-          })}
-          id="password"
-          name="password"
-          type="password"
-          placeholder="Password"
-          autoComplete="current-password"
-          required
-          className="p-2 rounded"
-        />{" "}
-        {errors.password?.type === "required" && (
-          <span className="text-red-600">Password is required</span>
-        )}
-        {errors.password?.type === "pattern" && (
-          <span className="text-red-600">
-            Password must have at least one special character and One capital
-            letter.
-          </span>
-        )}
-      </div>
-      <input
-        type="submit"
-        value={"Sign Up"}
-        className="btn btn-block bg-blue-800 bg-opacity-50 rounded py-2 text-white hover:bg-blue-600 hover:bg-opacity-50 mt-2"
-      />
-    </form>
+          type="submit"
+          value={"Sign Up"}
+          className="btn btn-block bg-blue-800 bg-opacity-50 rounded py-2 text-white hover:bg-blue-600 hover:bg-opacity-50 mt-2"
+        />
+      </form>
+      <div className="flex items-center gap-2">
+        <GoogleButton />
+        <GithubButton />
+      </div>{" "}
+    </>
   );
 };
 

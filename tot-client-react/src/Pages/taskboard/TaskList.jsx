@@ -3,27 +3,15 @@ import PropTypes from "prop-types";
 
 import { FaPenSquare, FaTrash, FaTrashAlt } from "react-icons/fa";
 import { Draggable, Droppable } from "react-beautiful-dnd";
-import {
-  Box,
-  Button,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import UpdateTask from "./UpdateTask";
 import { getDeadline } from "../../utils/util";
 
 const TaskList = ({ list, tasks, status, refetch, mutate }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   console.log(tasks);
-  const [selectedTaskId, setSelectedTaskId] = useState(null);
+  // const [selectedTaskId, setSelectedTaskId] = useState(null);
 
   const handleDelete = (_id) => {
     toast((t) => (
@@ -56,7 +44,7 @@ const TaskList = ({ list, tasks, status, refetch, mutate }) => {
 
   return (
     <>
-      <div className="mt-5 rounded-md text-wrap border-white border-2 w-full h-full 2xl:w-[30%]">
+      <div className="mt-5 rounded-md text-wrap border-white border-2 w-full h-full 2xl:w-[30%] max-w-xs">
         <div className="text-white w-full  ">
           <Box
             textAlign={"center"}
@@ -95,7 +83,7 @@ const TaskList = ({ list, tasks, status, refetch, mutate }) => {
                       >
                         {(provided) => (
                           <div
-                            className="flex items-center   justify-between rounded-md p-3  bg-slate-500 mx-auto w-full  "
+                            className="flex items-center   justify-between rounded-md p-2    border  shadow mx-auto w-full transition duration-75 hover:-rotate-1 hover:scale-105  "
                             key={filteredTask?._id}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
@@ -105,21 +93,30 @@ const TaskList = ({ list, tasks, status, refetch, mutate }) => {
                               {filteredTask?.title}
                             </div>
                             <div className="w-full mr-4">
-                              {getDeadline(filteredTask?.deadline)}{" "}
+                              {getDeadline(
+                                filteredTask?.deadline,
+                                filteredTask?.title
+                              )}{" "}
                             </div>
-                            <div className="w-full mr-4">
+                            <div
+                              className={`w-full mr-4 uppercase  
+                              `}
+                            >
                               {filteredTask?.priority}
                             </div>
-                            <div className="  flex flex-col items-center gap-5 ">
+                            <div className="  flex flex-wrap flex-row  items-center gap-5 ">
                               <Link
                                 to={`/taskboard/update-task/${filteredTask?._id}`}
+                                // onClick={() => {
+                                //   selectedTaskId(filteredTask._id);
+                                // }}
                               >
-                                <FaPenSquare size={"1.3rem"} />
+                                <FaPenSquare />
                               </Link>
                               <Link
                                 onClick={() => handleDelete(filteredTask?._id)}
                               >
-                                <FaTrashAlt size={"1.3rem"} />
+                                <FaTrashAlt />
                               </Link>
                             </div>
                           </div>
@@ -133,7 +130,7 @@ const TaskList = ({ list, tasks, status, refetch, mutate }) => {
           </div>
         </div>
       </div>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      {/* <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Update</ModalHeader>
@@ -148,7 +145,7 @@ const TaskList = ({ list, tasks, status, refetch, mutate }) => {
             </Button>
           </ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal> */}
     </>
   );
 };

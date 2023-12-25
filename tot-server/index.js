@@ -113,11 +113,10 @@ async function run() {
     });
 
     //single task
-    app.get("/task/:id", verifyToken, async (req, res) => {
+    app.get("/tasks/:id", verifyToken, async (req, res) => {
       const id = req.params.id;
-      const email = req.query.email;
 
-      const query = { _id: new ObjectId(id), email: email };
+      const query = { _id: new ObjectId(id) };
       const result = await taskCollection.findOne(query);
       res.send(result);
     });

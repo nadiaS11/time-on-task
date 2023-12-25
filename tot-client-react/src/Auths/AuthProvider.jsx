@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -21,9 +22,13 @@ const AuthProvider = ({ children }) => {
   const axiosSecure = useAxiosSecure();
 
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   const googleLogin = () => {
     return signInWithPopup(auth, googleProvider);
+  };
+  const githubLogin = () => {
+    return signInWithPopup(auth, githubProvider);
   };
 
   const createUser = (email, password) => {
@@ -83,6 +88,7 @@ const AuthProvider = ({ children }) => {
     signInUser,
     signOutUser,
     googleLogin,
+    githubLogin,
     updateUserProfile,
   };
 

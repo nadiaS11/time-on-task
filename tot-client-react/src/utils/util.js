@@ -1,5 +1,6 @@
 import axios from "axios";
-import { TbUrgent } from "react-icons/tb";
+import toast from "react-hot-toast";
+import { FcHighPriority } from "react-icons/fc";
 
 export const imgUpload = async (image) => {
   const formData = new FormData();
@@ -16,13 +17,14 @@ export const clearCookie = async () => {
   return res.data;
 };
 
-export const getDeadline = (date) => {
+export const getDeadline = (date, title) => {
   const deadline = new Date(date);
   const currentDate = new Date();
+  // console.log(currentDate, "current", deadline, "from get deadline");
   const timeDifference = deadline - currentDate;
-
+  // console.log(timeDifference);
   if (timeDifference < 0) {
-    // The deadline is in the past
+    toast.error(`Your task ${title.toUpperCase()} has expired.`);
     return "Expired";
   }
 

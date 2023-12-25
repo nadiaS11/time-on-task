@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import GoogleButton from "./buttons/GoogleButton";
+import GithubButton from "./buttons/GithubButton";
 const Login = () => {
   const { user, signInUser } = useAuth();
   const navigate = useNavigate();
@@ -86,13 +88,11 @@ const Login = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col max-w-xl mx-auto w-full"
-      >
-        <input
-          type="submit"
-          value={"Guest Log In"}
-          className="btn btn-block bg-rose-700 bg-opacity-50 rounded py-2 text-white hover:bg-rose-600 hover:bg-opacity-50 mt-2"
-        />
-      </form>
+      ></form>
+      <div className="flex items-center gap-2">
+        <GoogleButton />
+        <GithubButton />
+      </div>
     </>
   );
 };
